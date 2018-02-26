@@ -3,7 +3,7 @@ node {
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
     def buildInfo5
-    def biuldInfo7
+    def biuldInfo98
 stage('Preparation') {
      checkout scm
     }
