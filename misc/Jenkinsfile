@@ -2,7 +2,7 @@ node {
     def server = Artifactory.server 'ART'
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
-
+    def buildInfo2
 stage('Preparation') {
      checkout scm
     }
