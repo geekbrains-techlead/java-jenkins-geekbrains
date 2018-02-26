@@ -1,9 +1,8 @@
 node {
     def server = Artifactory.server 'ART'
     def rtMaven = Artifactory.newMavenBuild()
-    def buildInfo
-    def buildInfo5
-    
+    def rtMaven.tool = 'Maven 3.5.2' // Tool name from Jenkins configuration   
+ 
 stage('Preparation') {
      checkout scm
     }
