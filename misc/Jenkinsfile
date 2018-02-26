@@ -12,6 +12,7 @@ stage('Preparation') {
         git url: 'https://github.com/malkinfedor/java_hello_servlet.git'
     }
 
+/*
     stage ('Artifactory configuration') {
         rtMaven.tool = 'Maven 3.5.2' // Tool name from Jenkins configuration
         rtMaven.deployer releaseRepo: 'asusin_app_test-release', snapshotRepo: 'asusin_app_test-snapshot', server: server
@@ -28,4 +29,5 @@ stage('Preparation') {
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
     }
+*/
 }
