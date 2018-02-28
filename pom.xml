@@ -3,12 +3,12 @@
   <groupId>com.geekcap.vmturbo</groupId>
   <artifactId>hello-world-servlet-example</artifactId>
   <packaging>war</packaging>
-  <version>0.2-SNAPSHOT</version>
+  <version>0.2</version>
   <name>hello-world-servlet-example Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <scm>
     <developerConnection>scm:git:https://github.com/malkinfedor/java_hello_servlet</developerConnection>
-    <tag>HEAD</tag>
+    <tag>hello-world-servlet-example-0.2</tag>
   </scm>
 
  <distributionManagement>
