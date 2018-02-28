@@ -16,17 +16,17 @@ stage('Preparation') {
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
         buildInfo = Artifactory.newBuildInfo()
         buildInfo.env.capture = true
-	sh echo $POM_ARTIFACTID
+	sh 'echo $POM_ARTIFACTID'
     }
     
     stage ('Exec Maven') {
         rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
-        sh echo $POM_ARTIFACTID
+        sh 'echo $POM_ARTIFACTID'
     }
 /* */
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
-        sh echo $POM_ARTIFACTID
+        sh echo '$POM_ARTIFACTID'
     }
 
 }
