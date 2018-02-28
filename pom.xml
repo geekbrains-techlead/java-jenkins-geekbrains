@@ -11,6 +11,7 @@
     <developerConnection>scm:git:https://github.com/malkinfedor/java_hello_servlet</developerConnection>
   </scm>
 
+
 <reporting>
     <plugins>
       <plugin>
