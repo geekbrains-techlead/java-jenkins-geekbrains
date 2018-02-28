@@ -21,10 +21,14 @@ stage('Preparation') {
     
     stage ('Exec Maven') {
         rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
+	sh 'env > env.txt' 
+        for (String i : readFile('env.txt').split("\r?\n")) {
+        	println i
+}
     }
-/*
+/* */
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
     }
-*/
+
 }
