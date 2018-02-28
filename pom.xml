@@ -8,6 +8,7 @@
   <name>hello-world-servlet-example Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
+
 <reporting>
     <plugins>
       <plugin>
@@ -106,9 +107,9 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.13.4</version>
                 <configuration>
-                        <dockerHost>tcp://192.168.99.100:2376</dockerHost>
+                <!--    <dockerHost>tcp://192.168.99.100:2376</dockerHost>
                         <certPath>/Users/shaines/.docker/machine/machines/default</certPath>
-                        <useColor>true</useColor>
+                -->    <useColor>true</useColor>
                    <images>
                         <image>
                                 <name>lygado/tomcat-with-my-app:0.1</name>
@@ -128,13 +129,13 @@
                                         -->
                                         <assembly>
                                            <mode>dir</mode>
-                                           <basedir>/usr/local/tomcat/webapps</basedir>
+                                           <basedir>/opt/java_test_app/hello-world-servlet/src/main/docker/</basedir>
                                            <descriptor>assembly.xml</descriptor>
                                         </assembly>
                                 </build>
                                 <run>
                                         <ports>
-                                           <port>8080:8080</port>
+                                           <port>8086:8080</port>
                                         </ports>
                                 </run>
                         </image>
