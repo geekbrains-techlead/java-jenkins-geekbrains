@@ -12,7 +12,6 @@
   </scm>
 
 
-
  <distributionManagement>
     <repository>
       <id>myRepoId</id>
