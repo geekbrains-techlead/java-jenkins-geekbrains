@@ -16,7 +16,11 @@ stage('Preparation') {
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
         buildInfo = Artifactory.newBuildInfo()
         buildInfo.env.capture = true
-        
+
+        sh 'env > env.txt'
+        for (String i : readFile('env.txt').split("\r?\n")) {
+                println i
+}
     }
     
     stage ('Exec Maven') {
@@ -29,6 +33,11 @@ stage('Preparation') {
 /* */
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
+	sh 'env > env1.txt'
+        for (String i : readFile('env1.txt').split("\r?\n")) {
+                println i
+	}
+
     }
 
 }
