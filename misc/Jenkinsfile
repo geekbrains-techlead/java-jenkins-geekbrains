@@ -25,8 +25,7 @@ stage('Preparation') {
 /* */
     stage ('Publish build info') {
 	
-	build.info = ${git.commit.time}
-        echo ${git.commit.time} 
+	build.info = '1.2.3'
 	server.publishBuildInfo buildInfo
     }
 
