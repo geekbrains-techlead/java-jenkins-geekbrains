@@ -23,8 +23,10 @@ stage('Preparation') {
     }
 /* */
     stage ('Publish build info') {
+	
 	build.info = ${git.commit.time}
-        server.publishBuildInfo buildInfo
+        echo ${git.commit.time} 
+	server.publishBuildInfo buildInfo
     }
 
 }
