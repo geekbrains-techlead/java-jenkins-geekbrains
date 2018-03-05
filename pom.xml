@@ -123,6 +123,44 @@
             	<version>2.5.3</version>
             </plugin>
 
+	    <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>default-install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>default-install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <file>${project.basedir}/target/${artifactId}-${version.number}.${project.packaging}</file>
+                    <groupId>com.geekcap.vmturbo</groupId>
+                    <artifactId>hello-world-servlet-example</artifactId>
+                    <version>${artifactId}-${version.number}</version>
+                    <packaging>war</packaging>
+                </configuration>
+            </plugin>
+
 	   <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
