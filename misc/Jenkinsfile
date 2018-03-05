@@ -24,7 +24,7 @@ stage ('Get git hash'){
     }
     
     stage ('Exec Maven') {
-        rtMaven.run pom: 'pom.xml', goals: 'clean package', buildInfo: buildInfo
+        rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
     	echo git.commit.time
 	}
 /* */
