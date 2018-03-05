@@ -27,11 +27,11 @@ stage ('Get git hash'){
         rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
     	echo buildInfo
 	}
-/* */
+/* 
     stage ('Publish build info') {
 	
 	build.info = '1.2.3'
 	server.publishBuildInfo buildInfo
     }
-
+*/
 }
