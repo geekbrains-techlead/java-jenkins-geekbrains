@@ -11,14 +11,14 @@
     <tag>HEAD</tag>
   </scm>
 
-  <distributionManagement>
+<!--  <distributionManagement>
     <repository>
       <id>myRepoId</id>
       <name>myCompanyReporsitory</name>
       <url>http://ansibleclient.westus.cloudapp.azure.com:8082/artifactory/asusin_app_test-release</url>
     </repository>
   </distributionManagement>
-
+-->
     <properties>
         <version.number>${git.commit.time}.${git.commit.id.abbrev}</version.number>
     </properties>
