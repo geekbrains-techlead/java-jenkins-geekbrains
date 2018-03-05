@@ -10,14 +10,14 @@
     <developerConnection>scm:git:https://github.com/malkinfedor/java_hello_servlet</developerConnection>
     <tag>HEAD</tag>
   </scm>
-
-<!--  <distributionManagement>
+<!--
+  <distributionManagement>
     <repository>
       <id>myRepoId</id>
       <name>myCompanyReporsitory</name>
       <url>http://ansibleclient.westus.cloudapp.azure.com:8082/artifactory/asusin_app_test-release</url>
     </repository>
-  </distributionManagement>
+</distributionManagement>
 -->
     <properties>
         <version.number>${git.commit.time}.${git.commit.id.abbrev}</version.number>
@@ -159,6 +159,45 @@
                     <version>${artifactId}-${version.number}</version>
                     <packaging>war</packaging>
                 </configuration>
+            </plugin>
+
+	     <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <file>${project.basedir}/target/${artifactId}-${version.number}.${project.packaging}</file>
+                    <groupId>com.geekcap.vmturbo</groupId>
+                    <artifactId>hello-world-servlet-example</artifactId>
+                    <version>${artifactId}-${version.number}</version>
+                    <packaging>war</packaging>
+                <url>http://ansibleclient.westus.cloudapp.azure.com:8082/artifactory/asusin_app_test-release</url>
+		</configuration>
             </plugin>
 
 	   <plugin>
