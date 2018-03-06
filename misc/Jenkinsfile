@@ -1,36 +1,45 @@
 node {
     def server = Artifactory.server 'ART'
     def rtMaven = Artifactory.newMavenBuild()
- 
-stage('Preparation') {
-     checkout scm
-    }
 
     stage ('Clone') {
         git url: 'https://github.com/malkinfedor/java_hello_servlet.git'
     }
 
-stage ('Get git hash'){
-	shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-	echo shortCommit
-}
+    stage ('Get data from Git commit'){
+         sh 'cd "/var/jenkins_home/workspace/NNEEWW TEST PIPELINE WITH GIT PLUGIN"; mvn clean install; echo $git.dirty' 
+        
 
-    stage ('Artifactory configuration') {
-        rtMaven.tool = 'Maven 3.5.2' // Tool name from Jenkins configuration
-        rtMaven.deployer releaseRepo: 'asusin_app_test-release', snapshotRepo: 'asusin_app_test-snapshot', server: server
-        rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
-        buildInfo = Artifactory.newBuildInfo()
-        buildInfo.env.capture = true
+        GIT_HASH = sh (
+        script: '/var/jenkins_home/scripts/getHashAndDate.sh hash',
+        returnStdout: true
+        ).trim()
+        echo "Git commit hash: ${GIT_HASH}"
+        
+        GIT_DATE = sh (
+        script: '/var/jenkins_home/scripts/getHashAndDate.sh date',
+        returnStdout: true
+        ).trim()
+        echo "Git commit hash: ${GIT_DATE}"
+       
     }
-    
-    stage ('Exec Maven') {
-        rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
-	}
-/* 
-    stage ('Publish build info') {
-	
-	build.info = '1.2.3'
-	server.publishBuildInfo buildInfo
-    }
-*/
+  
+    stage('publish') {
+    def pom = readMavenPom file: 'pom.xml'
+    def uploadSpec = """{
+      "files": [
+        {
+          "pattern": "${WORKSPACE}/target/*.war",
+          "target": "asusin_app_test-snapshot/com/geekcap/vmturbo/hello-world-servlet-example/${GIT_DATE}-${GIT_HASH}/${pom.artifactId}-${GIT_DATE}-${GIT_HASH}.war"
+        },
+        {
+          "pattern": "${WORKSPACE}/pom.xml",
+          "target": "asusin_app_test-snapshot/com/geekcap/vmturbo/hello-world-servlet-example/${GIT_DATE}-${GIT_HASH}/${pom.artifactId}-${GIT_DATE}-${GIT_HASH}.pom"
+        }
+     ]
+    }"""
+    server.upload(uploadSpec)
+    echo env.WORKSPACE
+  }
+  
 }
