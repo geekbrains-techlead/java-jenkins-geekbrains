@@ -1,6 +1,0 @@
-hello
-world
-servlet
-example
-20180305
-112904.bd74846.war
