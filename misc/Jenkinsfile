@@ -7,7 +7,7 @@ node {
     }
 
     stage ('Get data from Git commit'){
-         sh 'cd "/var/jenkins_home/workspace/NNEEWW TEST PIPELINE WITH GIT PLUGIN"; mvn clean install; echo $git.dirty' 
+         sh 'cd "${WORKSPACE}"; mvn clean install; echo $git.dirty' 
         
 
         GIT_HASH = sh (
