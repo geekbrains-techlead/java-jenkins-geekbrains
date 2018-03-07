@@ -9,7 +9,7 @@ node {
     stage ('Get data from Git commit'){
         sh 'cd "${WORKSPACE}"; mvn clean install; echo $git.dirty' 
         
-
+        sh 'git checkout remotes/origin/misc'
         GIT_HASH = sh (
         script: '${WORKSPACE}/misc/getHashAndDate.sh hash',
         returnStdout: true
