@@ -7,17 +7,17 @@ node {
     }
 
     stage ('Get data from Git commit'){
-         sh 'cd "${WORKSPACE}"; mvn clean install; echo $git.dirty' 
+        sh 'cd "${WORKSPACE}"; mvn clean install; echo $git.dirty' 
         
 
         GIT_HASH = sh (
-        script: '/var/jenkins_home/scripts/getHashAndDate.sh hash',
+        script: '${WORKSPACE}/misc/getHashAndDate.sh hash',
         returnStdout: true
         ).trim()
         echo "Git commit hash: ${GIT_HASH}"
         
         GIT_DATE = sh (
-        script: '/var/jenkins_home/scripts/getHashAndDate.sh date',
+        script: '${WORKSPACE}/misc/getHashAndDate.sh date',
         returnStdout: true
         ).trim()
         echo "Git commit hash: ${GIT_DATE}"
