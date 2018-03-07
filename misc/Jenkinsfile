@@ -11,6 +11,7 @@ node {
         
         sh 'git checkout remotes/origin/misc'
         GIT_HASH = sh (
+        
         script: '${WORKSPACE}/misc/getHashAndDate.sh hash',
         returnStdout: true
         ).trim()
@@ -21,7 +22,7 @@ node {
         returnStdout: true
         ).trim()
         echo "Git commit hash: ${GIT_DATE}"
-       
+        sh 'git checkout master'
     }
   
     stage('publish') {
