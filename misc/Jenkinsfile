@@ -26,6 +26,8 @@ node {
     }
   
     stage('publish') {
+    sh 'git checkout master'
+
     def pom = readMavenPom file: 'pom.xml'
     def uploadSpec = """{
       "files": [
