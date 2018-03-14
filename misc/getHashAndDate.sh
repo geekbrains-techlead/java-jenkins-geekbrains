@@ -2,7 +2,7 @@
 set +e
 for word in $*; do parametr="$word" ; done
 #Get file name 
-cd "/var/jenkins_home/workspace/maven_artifactory_war_script/target/"
+cd "target/"
 fileName=$(ls -1 *.war)
 #Split file name
 #echo $fileName | sed 's/-/\n/g' > /var/jenkins_home/scripts/test.txt
