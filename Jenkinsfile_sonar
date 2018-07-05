@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-// For correct worc SQ Scanner, root directory have to have sonar-project.properties file
+// For correct work SQ Scanner, root directory have to have sonar-project.properties file
 node {
 
   stage('Clone') {
@@ -7,9 +7,9 @@ node {
   }
 
   stage('SonarQube analysis') {
-    // Here we have to set name for SonarQube Scanner instance from Globl Tool Configuration - SonarQube Scanner
+    // Here we have to set name for SonarQube Scanner instance from Globl Tool Configuration - SonarQube Scanner in Jenkins 
     def scannerHome = tool 'SQ_Scanner';
-    // Here we set the SonarQube server name from Configure System - SonarQube servers
+    // Here we set the SonarQube server name from Configure System - SonarQube servers in Jenkins
     withSonarQubeEnv('SonarQubeServer') {
         sh "${scannerHome}/bin/sonar-scanner"
     }
