@@ -15,7 +15,7 @@ public class HelloWorldServlet extends HttpServlet
   }
 }
 
-public class HelloWorldServlet extends HttpServlet 
+public class HelloWorldServlet1 extends HttpServlet 
 {
   public void service( HttpServletRequest req, HttpServletResponse res ) throws IOException {
     PrintWriter out = res.getWriter();
