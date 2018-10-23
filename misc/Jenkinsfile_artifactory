@@ -1,0 +1,25 @@
+node {
+    def server = Artifactory.server 'ART'
+    def rtMaven = Artifactory.newMavenBuild()
+    def buildInfo
+ stage('Preparation') {
+     checkout scm
+    }
+     stage ('Clone') {
+        git url: 'https://github.com/malkinfedor/java_hello_servlet.git'
+    }
+     stage ('Artifactory configuration') {
+        rtMaven.tool = 'Maven 3.5.2' // Tool name from Jenkins configuration
+        rtMaven.deployer releaseRepo: 'asusin_app_test-release', snapshotRepo: 'asusin_app_test-snapshot', server: server
+        rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
+        buildInfo = Artifactory.newBuildInfo()
+        buildInfo.env.capture = true
+        
+    }
+     stage ('Exec Maven') {
+        rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
+    }
+     stage ('Publish build info') {
+        server.publishBuildInfo buildInfo
+    }
+}
