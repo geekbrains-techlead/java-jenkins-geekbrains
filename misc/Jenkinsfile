@@ -1,5 +1,5 @@
 node {
-    def server = Artifactory.server 'ART'
+    def server = Artifactory.server 'artifactory'
     def rtMaven = Artifactory.newMavenBuild()
 
     stage ('Clone') {
@@ -7,7 +7,7 @@ node {
     }
 
     stage ('Get data from Git commit'){
-        sh 'cd "${WORKSPACE}"; mvn clean install; echo $git.dirty' 
+        sh 'cd "${WORKSPACE}"; /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/mvn_3.5.4/bin/mvn clean install; echo $git.dirty' 
         
         sh 'git checkout remotes/origin/misc'
         GIT_HASH = sh (
