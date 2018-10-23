@@ -26,7 +26,8 @@ node {
     }
   
     stage('publish') {
-
+    
+    // to run readMavenPom need to install the pipeline-utility-steps plugin
     def pom = readMavenPom file: 'pom.xml'
     def uploadSpec = """{
       "files": [
