@@ -33,11 +33,11 @@ node {
       "files": [
         {
           "pattern": "${WORKSPACE}/target/*.war",
-          "target": "asusin_app_test-snapshot/com/geekcap/vmturbo/hello-world-servlet-example/${GIT_DATE}-${GIT_HASH}/${pom.artifactId}-${GIT_DATE}-${GIT_HASH}.war"
+          "target": "asusin_app_test-release/com/geekcap/vmturbo/hello-world-servlet-example/${GIT_DATE}-${GIT_HASH}/${pom.artifactId}-${GIT_DATE}-${GIT_HASH}.war"
         },
         {
           "pattern": "${WORKSPACE}/pom.xml",
-          "target": "asusin_app_test-snapshot/com/geekcap/vmturbo/hello-world-servlet-example/${GIT_DATE}-${GIT_HASH}/${pom.artifactId}-${GIT_DATE}-${GIT_HASH}.pom"
+          "target": "asusin_app_test-release/com/geekcap/vmturbo/hello-world-servlet-example/${GIT_DATE}-${GIT_HASH}/${pom.artifactId}-${GIT_DATE}-${GIT_HASH}.pom"
         }
      ]
     }"""
