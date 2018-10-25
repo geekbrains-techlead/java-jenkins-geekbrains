@@ -20,7 +20,8 @@
 </distributionManagement>
 -->
     <properties>
-        <version.number>${git.commit.time}.${git.commit.id.abbrev}</version.number>
+        <!-- <version.number>${git.commit.time}.${git.commit.id.abbrev}</version.number> -->
+	<version.number>2.0.2</version.number>    
     </properties>
 
 
